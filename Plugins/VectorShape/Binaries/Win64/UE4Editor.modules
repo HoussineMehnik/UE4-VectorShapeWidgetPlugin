@@ -1,8 +1,0 @@
-{
-	"BuildId": "14830424",
-	"Modules": 
-	{
-		"VectorShape": "UE4Editor-VectorShape.dll",
-		"VectorShapeEditor": "UE4Editor-VectorShapeEditor.dll"
-	}
-}
