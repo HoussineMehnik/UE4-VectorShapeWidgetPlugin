@@ -41,38 +41,4 @@ uint32 FAssetTypeActions_VectorShapeData::GetCategories()
 	return  EAssetTypeCategories::UI;
 }
 
-
-TSharedPtr<SWidget> FAssetTypeActions_VectorShapeData::GetThumbnailOverlay(const FAssetData& AssetData) const
-{
-
-	const USlateVectorShapeData* VectorDataAsset = Cast<USlateVectorShapeData>(AssetData.GetAsset());
-
-	if (VectorDataAsset == nullptr)
-	{
-		return nullptr;
-	}
-
-	TSharedPtr<SVectorShapeWidget> VectorShapeMeshWidget = SNew(SVectorShapeWidget).Clipping(EWidgetClipping::ClipToBounds);
-	VectorShapeMeshWidget->InitRenderData(*VectorDataAsset);
-
-	return SNew(SBox)
-		.HAlign(HAlign_Fill)
-		.VAlign(VAlign_Fill)
-		.Padding(FMargin(4))
-		[
-					SNew(SScaleBox)
-					.VAlign(VAlign_Fill)
-					.HAlign(HAlign_Fill)
-					.Stretch(EStretch::Fill)
-						[
-							SNew(SBorder)
-							.BorderImage(FVectorShapeEditorStyle::Get()->GetBrush("Checker"))	
-								[							
-									VectorShapeMeshWidget.ToSharedRef()								
-								]
-
-						]
-		];
-}
-
 #undef LOCTEXT_NAMESPACE

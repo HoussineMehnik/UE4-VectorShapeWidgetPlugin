@@ -8,7 +8,7 @@ public class VectorShape : ModuleRules
 {
 	public VectorShape(ReadOnlyTargetRules Target) : base(Target)
 	{
-		/*PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;*/   PCHUsage = ModuleRules.PCHUsageMode.NoPCHs; bUseUnity = false;
+		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;   /*PCHUsage = ModuleRules.PCHUsageMode.NoPCHs; bUseUnity = false;*/
 
 		PrivateIncludePaths.Add("VectorShape/Private");
 

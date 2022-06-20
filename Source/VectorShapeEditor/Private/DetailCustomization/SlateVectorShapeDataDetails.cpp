@@ -79,34 +79,31 @@ void FSlateVectorShapeDataDetails::CustomizeDetails(IDetailLayoutBuilder& Detail
 				[
 					SNew(STextBlock)
 					.Text(this, &FSlateVectorShapeDataDetails::GetVerticesNumText)
-					.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-					.Font(FEditorStyle::Get().GetFontStyle("FontAwesome.10"))
+					.Font(IDetailLayoutBuilder::GetDetailFontBold())
 				]
 			+SVerticalBox::Slot()
 			.Padding(3)
 				[
 					SNew(STextBlock)
 					.Text(this, &FSlateVectorShapeDataDetails::GetTrianglesNumText)
-					.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-					.Font(FEditorStyle::Get().GetFontStyle("FontAwesome.10"))
+					.Font(IDetailLayoutBuilder::GetDetailFontBold())
 				]
 			+SVerticalBox::Slot()
 			.Padding(3)
 				[
 					SNew(STextBlock)
 					.Text(this, &FSlateVectorShapeDataDetails::GetIndicesNumText)
-					.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-					.Font(FEditorStyle::Get().GetFontStyle("FontAwesome.10"))
+					.Font(IDetailLayoutBuilder::GetDetailFontBold())
 				]
 			+SVerticalBox::Slot()
 			.Padding(3)
 				[
 					SNew(STextBlock)
 					.Text(this, &FSlateVectorShapeDataDetails::GetVectorShapeSizeText)
-					.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-					.Font(FEditorStyle::Get().GetFontStyle("FontAwesome.10"))
+					.Font(IDetailLayoutBuilder::GetDetailFontBold())
 				]
 		];
+
 
 
 	SlateVectorDataCategory.AddCustomRow(FText::GetEmpty(), false)

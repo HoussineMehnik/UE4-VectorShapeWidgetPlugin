@@ -24,7 +24,7 @@
 
 UVectorSplineComponent* VectorShapeEditorHelpers::AddNewSplineComponent(AVectorShapeActor* VectorShapeActor, bool bIsPolygonShape)
 {
-	if (VectorShapeActor == nullptr || VectorShapeActor->IsPendingKillOrUnreachable())
+	if (!IsValid(VectorShapeActor) || VectorShapeActor->IsUnreachable())
 	{
 		return nullptr;
 	}
@@ -74,7 +74,7 @@ UVectorSplineComponent* VectorShapeEditorHelpers::AddNewSplineComponent(AVectorS
 		VectorShapeActor->GetComponents(PostInstanceComponents);
 		for (UActorComponent* ActorComponent : PostInstanceComponents)
 		{
-			if (!ActorComponent->IsRegistered() && ActorComponent->bAutoRegister && !ActorComponent->IsPendingKill() && !PreInstanceComponents.Contains(ActorComponent))
+			if (IsValid(ActorComponent) && !ActorComponent->IsRegistered() && ActorComponent->bAutoRegister && !PreInstanceComponents.Contains(ActorComponent))
 			{
 				ActorComponent->RegisterComponent();
 			}
@@ -111,15 +111,14 @@ UVectorSplineComponent* VectorShapeEditorHelpers::AddNewSplineComponent(AVectorS
 UVectorSplineComponent* VectorShapeEditorHelpers::DuplicateSplineComponent(UVectorSplineComponent* SplineComponent)
 {
 	
-
-	if (SplineComponent == nullptr || SplineComponent->IsPendingKillOrUnreachable())
+	if (!IsValid(SplineComponent) || SplineComponent->IsUnreachable())
 	{
 		return nullptr;
 	}
 
 	AActor* VectorShapeActor = SplineComponent->GetOwner();
 
-	if (VectorShapeActor == nullptr || VectorShapeActor->IsPendingKillOrUnreachable())
+	if (!IsValid(VectorShapeActor) || VectorShapeActor->IsUnreachable())
 	{
 		return nullptr;;
 	}
@@ -156,14 +155,14 @@ UVectorSplineComponent* VectorShapeEditorHelpers::DuplicateSplineComponent(UVect
 
 void VectorShapeEditorHelpers::RemoveSplineComponent(UVectorSplineComponent* SplineComponent)
 {
-	if (SplineComponent == nullptr || SplineComponent->IsPendingKillOrUnreachable())
+	if (!IsValid(SplineComponent) || SplineComponent->IsUnreachable())
 	{
 		return;
 	}
 
 	AActor* VectorShapeActor = SplineComponent->GetOwner();
 
-	if (VectorShapeActor == nullptr || VectorShapeActor->IsPendingKillOrUnreachable())
+	if (!IsValid(VectorShapeActor) || VectorShapeActor->IsUnreachable())
 	{
 		return;
 	}
@@ -185,7 +184,7 @@ void VectorShapeEditorHelpers::RemoveSplineComponent(UVectorSplineComponent* Spl
 
 void VectorShapeEditorHelpers::ClearAllSplineComponents(AVectorShapeActor* VectorShapeActor)
 {
-		if (VectorShapeActor == nullptr || VectorShapeActor->IsPendingKillOrUnreachable())
+	if (!IsValid(VectorShapeActor) || VectorShapeActor->IsUnreachable())
 	{
 		return;
 	}
@@ -208,7 +207,7 @@ void VectorShapeEditorHelpers::ClearAllSplineComponents(AVectorShapeActor* Vecto
 // Dont forget Transaction when you add multi comps
 void VectorShapeEditorHelpers::OnCreateVectorMesh(AVectorShapeActor* VectorShapeActor)
 {
-	if (VectorShapeActor == nullptr || VectorShapeActor->IsPendingKill())
+	if (!IsValid(VectorShapeActor) || VectorShapeActor->IsUnreachable())
 	{
 		return;
 	}

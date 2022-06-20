@@ -93,9 +93,9 @@ public:
 				for (int VertIdx = 0; VertIdx < NumVerts; VertIdx++)
 				{
 					FDynamicMeshVertex& Vert = Vertices[VertIdx];
-					Vert.Position = SrcSection.Vertices[VertIdx];
+					Vert.Position = (FVector3f)SrcSection.Vertices[VertIdx];
 					Vert.Color = (VertIdx < SrcSection.VertexColors.Num()) ? SrcSection.VertexColors[VertIdx] : FColor::White;
-					Vert.TextureCoordinate[0] = bHasUniqueUVs ? SrcSection.TextureCoordinates[0] : SrcSection.TextureCoordinates[VertIdx];
+					Vert.TextureCoordinate[0] = FVector2f(bHasUniqueUVs ? SrcSection.TextureCoordinates[0] : SrcSection.TextureCoordinates[VertIdx]);
 					Vert.TangentX = bHasUniqueTangent ? SrcSection.Tangents[0] : SrcSection.Tangents[VertIdx];
 					Vert.TangentZ = bHasUniqueNormal ? SrcSection.Normals[0] : SrcSection.Normals[VertIdx];
 					Vert.TangentZ.Vector.W = 127;

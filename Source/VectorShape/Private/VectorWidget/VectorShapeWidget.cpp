@@ -30,12 +30,12 @@ void UVectorShapeWidget::SynchronizeProperties()
 
 	if (SlateVectorWidget.IsValid())
 	{
-		if (MaterialOverride != nullptr && MaterialOverride->IsPendingKill())
+		if (!IsValid(MaterialOverride))
 		{
 			MaterialOverride = nullptr;
 		}
 
-		if (VectorDataAsset == nullptr || VectorDataAsset->IsPendingKill())
+		if (!IsValid(VectorDataAsset))
 		{
 			SlateVectorWidget->ClearRenderData();
 		}

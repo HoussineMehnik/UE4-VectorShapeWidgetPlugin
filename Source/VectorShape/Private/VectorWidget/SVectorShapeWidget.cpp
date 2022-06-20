@@ -203,7 +203,7 @@ int32 SVectorShapeWidget::OnPaint(const FPaintArgs& Args, const FGeometry& Allot
 				TransformedVertexData = RenderData.VertexData;
 				for (FSlateVertex& NewSlateVert : TransformedVertexData)
 				{
-					NewSlateVert.Position = AbsoluteOffset + Matrix2D.TransformPoint(NewSlateVert.Position * GeomLocalExtent);
+					NewSlateVert.Position = FVector2f(AbsoluteOffset + Matrix2D.TransformPoint(FVector2D(NewSlateVert.Position) * GeomLocalExtent));
 				}
 			}
 
@@ -219,36 +219,33 @@ int32 SVectorShapeWidget::OnPaint(const FPaintArgs& Args, const FGeometry& Allot
 
 
 
-	}
-
-
-	if (LinesData.Num() > 0)
-	{
-		for (const FVectorLineData& LineData : LinesData)
+		if (LinesData.Num() > 0)
 		{
-			TArray<FVector2D> TransformedPoints;
+			for (const FVectorLineData& LineData : LinesData)
 			{
-
-				TransformedPoints = LineData.Points;
-				for (FVector2D& NewPoint : TransformedPoints)
+				TArray<FVector2D> TransformedPoints;
 				{
-					NewPoint = AbsoluteOffset + Matrix2D.TransformPoint((2.0f * NewPoint / CachedWorldSize) * GeomLocalExtent);
+
+					TransformedPoints = LineData.Points;
+					for (FVector2D& NewPoint : TransformedPoints)
+					{
+						NewPoint = AbsoluteOffset + Matrix2D.TransformPoint((2.0f * NewPoint / CachedWorldSize) * GeomLocalExtent);
+					}
 				}
+
+				FSlateDrawElement::MakeLines(
+					OutDrawElements,
+					LayerId + 1,
+					FPaintGeometry(),
+					TransformedPoints,
+					ESlateDrawEffect::None,
+					LineData.Tint,
+					LineData.bAntialias,
+					LineData.Thickness);
 			}
-
-			FSlateDrawElement::MakeLines(
-				OutDrawElements,
-				LayerId + 1,
-				FPaintGeometry(),
-				TransformedPoints,
-				ESlateDrawEffect::None,
-				LineData.Tint,
-				LineData.bAntialias,
-				LineData.Thickness);
 		}
+
 	}
-
-
 	return LayerId;
 }
 
@@ -267,3 +264,9 @@ void SVectorShapeWidget::AddReferencedObjects(FReferenceCollector& Collector)
 		RenderData.Brush->AddReferencedObjects(Collector);
 	}
 }
+
+FString SVectorShapeWidget::GetReferencerName() const
+{
+	return TEXT("SVectorShapeWidget");
+}
+

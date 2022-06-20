@@ -51,6 +51,7 @@ protected:
 
 	// ~ FGCObject
 	virtual void AddReferencedObjects(FReferenceCollector& Collector) override;
+	virtual FString GetReferencerName() const override;
 	// ~ FGCObject
 	struct FRenderData
 	{

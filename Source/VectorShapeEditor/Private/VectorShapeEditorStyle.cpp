@@ -11,7 +11,7 @@
 #include "EditorStyleSet.h"
 
 
-
+#define IMAGE_BRUSH_SVG( RelativePath, ... ) FSlateVectorImageBrush(FVectorShapeEditorStyle::InContent(RelativePath, ".svg"),__VA_ARGS__)
 #define IMAGE_BRUSH( RelativePath, ... ) FSlateImageBrush( FVectorShapeEditorStyle::InContent( RelativePath, ".png" ), __VA_ARGS__ )
 
 
@@ -155,11 +155,11 @@ void FVectorShapeEditorStyle::Initialize()
 	
 
 	// Class Thumbnails
-	StyleSet->Set("ClassIcon.SlateVectorShapeData", new IMAGE_BRUSH("VectorAsset_64x", Icon16x16));
-	StyleSet->Set("ClassThumbnail.SlateVectorShapeData", new IMAGE_BRUSH("VectorAsset_64x", Icon64x64));
+	StyleSet->Set("ClassIcon.SlateVectorShapeData", new IMAGE_BRUSH_SVG("VectorAsset", Icon16x16));
+	StyleSet->Set("ClassThumbnail.SlateVectorShapeData", new IMAGE_BRUSH_SVG("VectorAsset", Icon64x64));
 
-	StyleSet->Set("ClassIcon.VectorShapeWidget", new IMAGE_BRUSH("VectorWidget_32x", Icon16x16));
-	StyleSet->Set("ClassThumbnail.VectorShapeWidget", new IMAGE_BRUSH("VectorWidget_32x", Icon16x16));
+	StyleSet->Set("ClassIcon.VectorShapeWidget", new IMAGE_BRUSH_SVG("VectorWidget", Icon16x16));
+	StyleSet->Set("ClassThumbnail.VectorShapeWidget", new IMAGE_BRUSH_SVG("VectorWidget", Icon16x16));
 
 	// Register Style Set
 	FSlateStyleRegistry::RegisterSlateStyle(*StyleSet.Get());
@@ -167,6 +167,8 @@ void FVectorShapeEditorStyle::Initialize()
 
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
 
+
+#undef  IMAGE_BRUSH_SVG
 #undef IMAGE_BRUSH
 
 

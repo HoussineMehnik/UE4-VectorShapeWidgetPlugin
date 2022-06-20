@@ -8,7 +8,7 @@ public class VectorShapeEditor : ModuleRules
 {
 	public VectorShapeEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
-		/*PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;*/   PCHUsage = ModuleRules.PCHUsageMode.NoPCHs; bUseUnity = false;
+		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;   /*PCHUsage = ModuleRules.PCHUsageMode.NoPCHs; bUseUnity = false;*/
 
 		PrivateIncludePaths.Add("VectorShapeEditor/Private");
 
@@ -41,6 +41,7 @@ public class VectorShapeEditor : ModuleRules
                 "AssetRegistry",
                 "Projects",
                 "AppFramework",
+				"EditorFramework",
 
 				// ... add private dependencies that you statically link with here ...	
                  "VectorShape",

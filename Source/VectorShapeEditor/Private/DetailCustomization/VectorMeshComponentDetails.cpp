@@ -12,10 +12,10 @@
 #include "Widgets/Input/SButton.h"
 #include "AssetRegistryModule.h"
 #include "Widgets/SBoxPanel.h"
+#include "Widgets/Images/SImage.h"
 #include "Widgets//Input/SComboButton.h"
 #include "Framework/Application/SlateApplication.h"
 #include "Widgets/Layout/SBox.h"
-#include "EditorFontGlyphs.h"
 
 #include "Engine/StaticMesh.h"
 #include "IAssetTools.h"
@@ -83,10 +83,8 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 									.Padding(2.f)
 									.AutoWidth()
 									[
-										SNew(STextBlock)
-										.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-										.Font( FEditorStyle::Get().GetFontStyle( "FontAwesome.8" ) )
-										.Text( FEditorFontGlyphs::Floppy_O)
+										SNew(SImage)
+										.Image(FAppStyle::Get().GetBrush("Icons.Save"))
 									]
 
 									+ SHorizontalBox::Slot()
@@ -127,10 +125,8 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 											.Padding(2.f)
 											.AutoWidth()
 											[
-												SNew(STextBlock)
-												.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-												//.Font( FEditorStyle::Get().GetFontStyle( "FontAwesome.8" ) )
-												.Text( FEditorFontGlyphs::Plus )
+												SNew(SImage)
+												.Image(FAppStyle::Get().GetBrush("Icons.Plus"))
 											]
 
 											+ SHorizontalBox::Slot()
@@ -200,10 +196,8 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 										.Padding(2.f)
 										.AutoWidth()
 										[
-											SNew(STextBlock)
-											.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-											//.Font( FEditorStyle::Get().GetFontStyle( "FontAwesome.8" ) )
-											.Text( FEditorFontGlyphs::Times )
+											SNew(SImage)
+											.Image(FAppStyle::Get().GetBrush("Icons.X"))
 										]
 
 										+ SHorizontalBox::Slot()
@@ -281,7 +275,7 @@ UVectorMeshComponent* FVectorMeshComponentDetails::GetSelectedVectorMeshComp() c
 	{
 		AVectorShapeActor* VectorShapeActor = Cast<AVectorShapeActor>(Object.Get());
 		// See if this one is good
-		if (VectorShapeActor != nullptr && !VectorShapeActor->IsPendingKillOrUnreachable())
+		if (IsValid(VectorShapeActor) && !VectorShapeActor->IsUnreachable())
 		{
 			VectorShapeMeshComp = VectorShapeActor->GetMeshComponent();
 			break;
@@ -300,7 +294,7 @@ AVectorShapeActor* FVectorMeshComponentDetails::GetSelectedVectorShapeActor() co
 	{
 		AVectorShapeActor* VectorShapeActor = Cast<AVectorShapeActor>(Object.Get());
 		// See if this one is good
-		if (VectorShapeActor != nullptr && !VectorShapeActor->IsPendingKillOrUnreachable())
+		if (IsValid(VectorShapeActor) && !VectorShapeActor->IsUnreachable())
 		{
 			return VectorShapeActor;
 		}
@@ -346,7 +340,7 @@ bool FVectorMeshComponentDetails::CanDeleteAllSplines() const
 FReply FVectorMeshComponentDetails::ClickedOnAddNewSplineComponent(bool bIsPolygon)
 {
 	UVectorMeshComponent* VectorShapeMeshComp = GetSelectedVectorMeshComp();
-	if (VectorShapeMeshComp != nullptr && !VectorShapeMeshComp->IsPendingKillOrUnreachable())
+	if (IsValid(VectorShapeMeshComp) && !VectorShapeMeshComp->IsUnreachable())
 	{
 		if (AVectorShapeActor* VectorShapeActor = Cast<AVectorShapeActor>(VectorShapeMeshComp->GetOwner()))
 		{

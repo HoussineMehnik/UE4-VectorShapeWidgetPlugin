@@ -91,7 +91,7 @@ public:
 		static UMaterialInterface* VectorMeshDefaultMaterial;
 		if (VectorMeshDefaultMaterial == nullptr)
 		{
-			const FStringAssetReference ColoredMaterialName = FString(GetVectorMeshDefaultMaterialPath());
+			const FSoftObjectPath ColoredMaterialName = FString(GetVectorMeshDefaultMaterialPath());
 			VectorMeshDefaultMaterial = Cast<UMaterialInterface>(ColoredMaterialName.TryLoad());
 		}
 		return VectorMeshDefaultMaterial;
@@ -102,7 +102,7 @@ public:
 		static UMaterialInterface* VectorShapeWidgetDefaultMaterial;
 		if (VectorShapeWidgetDefaultMaterial == nullptr)
 		{
-			const FStringAssetReference ColoredMaterialName = FString(GetVectorShapeWidgetDefaultMaterialPath());
+			const FSoftObjectPath ColoredMaterialName = FString(GetVectorShapeWidgetDefaultMaterialPath());
 			VectorShapeWidgetDefaultMaterial = Cast<UMaterialInterface>(ColoredMaterialName.TryLoad());
 		}
 

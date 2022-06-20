@@ -863,7 +863,7 @@ bool FVectorSplineComponentVisualizer::GetWidgetLocation(const FEditorViewportCl
 
 bool FVectorSplineComponentVisualizer::GetCustomInputCoordinateSystem(const FEditorViewportClient* ViewportClient, FMatrix& OutMatrix) const
 {
-	if (ViewportClient->GetWidgetCoordSystemSpace() == COORD_Local || ViewportClient->GetWidgetMode() == FWidget::WM_Rotate)
+	if (ViewportClient->GetWidgetCoordSystemSpace() == COORD_Local || ViewportClient->GetWidgetMode() == UE::Widget::WM_Rotate)
 	{
 		UVectorSplineComponent* SplineComp = GetEditedSplineComponent();
 		if (SplineComp != nullptr)
@@ -1891,7 +1891,7 @@ TSharedPtr<SWidget> FVectorSplineComponentVisualizer::CreateColorSelectionWidegt
 	return SNew(SColorBlock)
 		.Color(this, &FVectorSplineComponentVisualizer::OnGetColorForColorBlock)
 		.ShowBackgroundForAlpha(false)
-		.IgnoreAlpha(true)
+		.AlphaDisplayMode(EColorBlockAlphaDisplayMode::Ignore)
 		.OnMouseButtonDown(this, &FVectorSplineComponentVisualizer::OnMouseButtonDownColorBlock)
 		.Size(FVector2D(35.0f, 12.0f));
 }

@@ -18,6 +18,5 @@ public:
 	virtual FColor GetTypeColor() const override;
 	virtual uint32 GetCategories() override;
 	virtual UClass* GetSupportedClass() const override;
-	virtual TSharedPtr<class SWidget> GetThumbnailOverlay(const FAssetData& AssetData) const override;
 	// End of IAssetTypeActions interface
 };
