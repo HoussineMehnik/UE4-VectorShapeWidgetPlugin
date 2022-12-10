@@ -20,7 +20,7 @@ public:
 	static void Shutdown();
 	static TSharedPtr<ISlateStyle> Get();
 	static const ISlateStyle& GetRef();
-	static FName GetStyleSetName();
+	static FName GetAppStyleSetName();
 
 private:
 	static FString InContent(const FString& RelativePath, const ANSICHAR* Extension);

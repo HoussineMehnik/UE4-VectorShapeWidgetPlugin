@@ -42,7 +42,7 @@ public class VectorShapeEditor : ModuleRules
                 "Projects",
                 "AppFramework",
 				"EditorFramework",
-
+                "IntroTutorials",
 				// ... add private dependencies that you statically link with here ...	
                  "VectorShape",
             }

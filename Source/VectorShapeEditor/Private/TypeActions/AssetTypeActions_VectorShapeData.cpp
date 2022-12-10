@@ -11,7 +11,7 @@
 #include "EditorStyleSet.h"
 #include "IIntroTutorials.h"
 #include "EditorTutorial.h"
-#include "AssetData.h"
+#include "AssetRegistry/AssetData.h"
 #include "Widgets/SBoxPanel.h"
 #include "VectorWidget/SlateVectorShapeData.h"
 #include "VectorWidget/SVectorShapeWidget.h"

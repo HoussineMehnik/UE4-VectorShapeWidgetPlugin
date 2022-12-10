@@ -21,7 +21,7 @@
 #include "RawMesh.h"
 
 #include "Dialogs/DlgPickAssetPath.h"
-#include "AssetRegistryModule.h"
+#include "AssetRegistry/AssetRegistryModule.h"
 #include "Widgets/SBoxPanel.h"
 #include "Widgets/Input/SComboButton.h"
 #include "Framework/Application/SlateApplication.h"

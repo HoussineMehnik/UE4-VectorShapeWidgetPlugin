@@ -1823,7 +1823,7 @@ TSharedPtr<SWidget> FVectorSplineComponentVisualizer::GenerateContextMenu() cons
 					LOCTEXT("KeyTypeTooltip", "Define the type of the spline point."),
 					FNewMenuDelegate::CreateSP(this, &FVectorSplineComponentVisualizer::GenerateSplinePointTypeSubMenu),
 					false,
-					FSlateIcon(FVectorShapeEditorStyle::GetStyleSetName(), "VectorShapeEditor.PointCurveMode")
+					FSlateIcon(FVectorShapeEditorStyle::GetAppStyleSetName(), "VectorShapeEditor.PointCurveMode")
 				);
 
 				MenuBuilder.AddMenuEntry(FVectorSplineComponentVisualizerCommands::Get().SelectAllKeys);
@@ -1840,7 +1840,7 @@ TSharedPtr<SWidget> FVectorSplineComponentVisualizer::GenerateContextMenu() cons
 					LOCTEXT("SplineTypeTooltip", "Define the type of the spline."),
 					FNewMenuDelegate::CreateSP(this, &FVectorSplineComponentVisualizer::GenerateSplineTypeSubMenu),
 					false,
-					FSlateIcon(FVectorShapeEditorStyle::GetStyleSetName(), "VectorShapeEditor.SplineType")
+					FSlateIcon(FVectorShapeEditorStyle::GetAppStyleSetName(), "VectorShapeEditor.SplineType")
 				);
 
 				MenuBuilder.AddMenuEntry(FVectorSplineComponentVisualizerCommands::Get().DeleteSpline);

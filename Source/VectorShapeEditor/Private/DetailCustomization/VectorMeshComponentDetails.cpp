@@ -10,7 +10,7 @@
 #include "Application/SlateWindowHelper.h"
 #include "Widgets/Text/STextBlock.h"
 #include "Widgets/Input/SButton.h"
-#include "AssetRegistryModule.h"
+#include "AssetRegistry/AssetRegistryModule.h"
 #include "Widgets/SBoxPanel.h"
 #include "Widgets/Images/SImage.h"
 #include "Widgets//Input/SComboButton.h"
@@ -66,10 +66,10 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 			.Padding(2)
 				[
 					SNew(SBorder)
-					.BorderImage(FEditorStyle::GetBrush("ToolPanel.DarkGroupBorder"))
+					.BorderImage(FAppStyle::GetBrush("ToolPanel.DarkGroupBorder"))
 					[
 					SNew(SButton)
-					.ButtonStyle(FEditorStyle::Get(), "FlatButton.Primary")
+					.ButtonStyle(FAppStyle::Get(), "FlatButton.Primary")
 					.OnClicked(this, &FVectorMeshComponentDetails::ClickedOnSaveData)
 					.IsEnabled(this, &FVectorMeshComponentDetails::CanSaveData)
 					.VAlign(VAlign_Center)
@@ -95,8 +95,8 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 										SNew(STextBlock)
 										.Text(LOCTEXT("SaveDataToAsset", "Save Data To Asset"))
 										.ToolTipText(LOCTEXT("SaveDataToAsset_Tooltip", "Save VectorShape Mesh Data To Asset."))
-										.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-										//.Font(FEditorStyle::Get().GetFontStyle("FontAwesome.10"))
+										.TextStyle(FAppStyle::Get(), "ContentBrowser.TopBar.Font")
+										//.Font(FAppStyle::Get().GetFontStyle("FontAwesome.10"))
 									]
 					]
 					]
@@ -110,10 +110,10 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 			.Padding(2.f)
 				[
 					SNew(SBorder)
-					.BorderImage(FEditorStyle::GetBrush("ToolPanel.DarkGroupBorder"))
+					.BorderImage(FAppStyle::GetBrush("ToolPanel.DarkGroupBorder"))
 					[
 						SNew(SComboButton)
-						.ButtonStyle(FEditorStyle::Get(), "FlatButton.Success")
+						.ButtonStyle(FAppStyle::Get(), "FlatButton.Success")
 						.ContentPadding(2)
 						.ButtonContent()
 						[
@@ -137,8 +137,8 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 												SNew(STextBlock)
 												.Text(LOCTEXT("NewSpline", "Spline"))
 												.ToolTipText(LOCTEXT("NewSpline_ToolTip", "Add New Spline Component"))
-												.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-												//.Font(FEditorStyle::Get().GetFontStyle("FontAwesome.10"))
+												.TextStyle(FAppStyle::Get(), "ContentBrowser.TopBar.Font")
+												//.Font(FAppStyle::Get().GetFontStyle("FontAwesome.10"))
 											]
 						
 						]
@@ -149,28 +149,28 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 							.Padding(2.0f)
 								[
 									SNew(SButton)
-									.ButtonStyle(FEditorStyle::Get(), "FlatButton.Primary")
+									.ButtonStyle(FAppStyle::Get(), "FlatButton.Primary")
 									.OnClicked(this, &FVectorMeshComponentDetails::ClickedOnAddNewSplineComponent, true)
 									.Content()
 									[
 										SNew(STextBlock)
 										.Text(LOCTEXT("Polygon", "(+) Polygon"))
 										.ToolTipText(LOCTEXT("Polygon_ToolTip", "Add New Polygon"))
-										.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
+										.TextStyle(FAppStyle::Get(), "ContentBrowser.TopBar.Font")
 									]
 								]
 							+ SVerticalBox::Slot()
 							.Padding(2.0f)
 								[
 									SNew(SButton)
-									.ButtonStyle(FEditorStyle::Get(), "FlatButton.Warning")
+									.ButtonStyle(FAppStyle::Get(), "FlatButton.Warning")
 									.OnClicked(this, &FVectorMeshComponentDetails::ClickedOnAddNewSplineComponent,false)
 									.Content()
 									[
 										SNew(STextBlock)
 										.Text(LOCTEXT("Line", "(-) Line"))
 										.ToolTipText(LOCTEXT("Line_ToolTip", "Add New Line"))
-										.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
+										.TextStyle(FAppStyle::Get(), "ContentBrowser.TopBar.Font")
 									]
 								]
 						]
@@ -180,10 +180,10 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 			.Padding(2.f)
 				[
 					SNew(SBorder)
-					.BorderImage(FEditorStyle::GetBrush("ToolPanel.DarkGroupBorder"))
+					.BorderImage(FAppStyle::GetBrush("ToolPanel.DarkGroupBorder"))
 						[
 						SNew(SButton)
-						.ButtonStyle(FEditorStyle::Get(), "FlatButton.Danger")
+						.ButtonStyle(FAppStyle::Get(), "FlatButton.Danger")
 						.OnClicked(this, &FVectorMeshComponentDetails::OnDeleteAllSpline)
 						.IsEnabled(this, &FVectorMeshComponentDetails::CanDeleteAllSplines)
 						.VAlign(VAlign_Center)
@@ -208,8 +208,8 @@ void FVectorMeshComponentDetails::CustomizeDetails( IDetailLayoutBuilder& Detail
 											SNew(STextBlock)
 											.Text(LOCTEXT("DeleteSplines", "Delete Splines"))
 											.ToolTipText(LOCTEXT("DeleteSplines_Tooltip", "Force Rebuild VectorShape Mesh & Collision."))
-											.TextStyle(FEditorStyle::Get(), "ContentBrowser.TopBar.Font")
-											//.Font(FEditorStyle::Get().GetFontStyle("FontAwesome.10"))
+											.TextStyle(FAppStyle::Get(), "ContentBrowser.TopBar.Font")
+											//.Font(FAppStyle::Get().GetFontStyle("FontAwesome.10"))
 										]
 							]
 					]

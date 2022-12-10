@@ -25,7 +25,7 @@ TSharedPtr< FSlateStyleSet > FVectorShapeEditorStyle::StyleSet = NULL;
 TSharedPtr< class ISlateStyle > FVectorShapeEditorStyle::Get() { return StyleSet; }
 const ISlateStyle& FVectorShapeEditorStyle::GetRef() { return *(StyleSet.Get()); }
 
-FName FVectorShapeEditorStyle::GetStyleSetName()
+FName FVectorShapeEditorStyle::GetAppStyleSetName()
 {
 	return StyleSet->GetStyleSetName();
 }
