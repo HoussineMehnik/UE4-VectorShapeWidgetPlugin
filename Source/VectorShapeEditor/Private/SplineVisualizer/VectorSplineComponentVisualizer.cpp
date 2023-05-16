@@ -1940,7 +1940,7 @@ void FVectorSplineComponentVisualizer::CreateColorPicker(bool bUseAlpha) const
 			PickerArgs.OnColorPickerCancelled = FOnColorPickerCancelled::CreateSP(this, &FVectorSplineComponentVisualizer::OnColorPickerCancelled);
 			PickerArgs.OnInteractivePickBegin = FSimpleDelegate::CreateSP(this, &FVectorSplineComponentVisualizer::OnColorPickerInteractiveBegin);
 			PickerArgs.OnInteractivePickEnd = FSimpleDelegate::CreateSP(this, &FVectorSplineComponentVisualizer::OnColorPickerInteractiveEnd);
-			PickerArgs.InitialColorOverride = SplineComp->SplineColor;
+			PickerArgs.InitialColor = SplineComp->SplineColor;
 			/*PickerArgs.ParentWidget = ColorPickerParentWidget;
 			PickerArgs.OptionalOwningDetailsView = ColorPickerParentWidget;
 			FWidgetPath ParentWidgetPath;
