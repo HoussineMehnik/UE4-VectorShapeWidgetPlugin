@@ -19,13 +19,14 @@
 #include "VectorShapeEditorHelpers.h"
 #include "VectorShapeActor.h"
 #include "VectorShapeEditorStyle.h"
-#include "Persona/Private/SRigPicker.h"
 #include "ContentBrowserDelegates.h"
 #include "CanvasItem.h"
 #include "Widgets/Colors/SColorBlock.h"
-#include "AppFramework/Public/Widgets/Colors/SColorPicker.h"
+#include "Widgets/Colors/SColorPicker.h"
 #include "Engine/Engine.h"
 #include "PolygonTools/VectorPolygonTools.h"
+#include "SceneView.h"
+#include "Settings/LevelEditorViewportSettings.h"
 
 IMPLEMENT_HIT_PROXY(HVectorSplineVisProxy, HComponentVisProxy);
 IMPLEMENT_HIT_PROXY(HVectorSplineKeyProxy, HVectorSplineVisProxy);
@@ -1337,7 +1338,7 @@ void FVectorSplineComponentVisualizer::OnAddKey()
 		SplineComp->GetComponentTransform().InverseTransformPosition(SelectedSplinePosition),
 		FVector::ZeroVector,
 		FVector::ZeroVector,
-		(SplinePosition.Points[SelectedSegmentIndex].InterpMode == CIM_CurveBreak || SplinePosition.Points[SelectedSegmentIndex].InterpMode == CIM_CurveUser) ? CIM_CurveAuto : SplinePosition.Points[SelectedSegmentIndex].InterpMode);
+		(SplinePosition.Points[SelectedSegmentIndex].InterpMode == CIM_CurveBreak || SplinePosition.Points[SelectedSegmentIndex].InterpMode == CIM_CurveUser) ? CIM_CurveAuto : SplinePosition.Points[SelectedSegmentIndex].InterpMode.GetValue());
 
 
 	FInterpCurvePoint<FQuat> NewRotPoint(

@@ -20,6 +20,9 @@
 #include "StaticMeshResources.h"
 #include "VectorShapeTypes.h"
 #include "VectorShapeActor.h"
+#include "SceneInterface.h"
+#include "MaterialDomain.h"
+#include "Materials/MaterialRenderProxy.h"
 
 DECLARE_CYCLE_STAT(TEXT("Create Vector Mesh Proxy"), STAT_VectorMesh_CreateSceneProxy, STATGROUP_VectorMesh);
 DECLARE_CYCLE_STAT(TEXT("Get Vector Mesh Elements"), STAT_VectorMesh_GetMeshElements, STATGROUP_VectorMesh);
