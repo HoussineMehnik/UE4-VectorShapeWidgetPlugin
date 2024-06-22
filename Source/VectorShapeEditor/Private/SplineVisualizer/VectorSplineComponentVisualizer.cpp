@@ -318,8 +318,6 @@ static FIntPoint FindSegmentClosestToWorldLocation(const UVectorSplineComponent*
 			return FIntPoint(PointA, PointA + 1);
 		}
 	}
-
-	return FIntPoint(INDEX_NONE, INDEX_NONE);
 }
 
 static void CalculateCursorTraceStartEnd(FEditorViewportClient* InViewportClient, FVector& Start, FVector& End)
